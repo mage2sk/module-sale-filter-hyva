@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+  Panth_SaleFilterHyva: hook point for Hyvä-specific overrides of the sale
+  filter rendering. Magento's layered-nav FilterRenderer iterates the filter
+  list (including ours, added via plugin) with the active theme's filter
+  template — Hyvä ships its own under
+  vendor/hyva-themes/magento2-default-theme/Magento_LayeredNavigation so no
+  template override is required for v1.0.0.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body/>
+</page>

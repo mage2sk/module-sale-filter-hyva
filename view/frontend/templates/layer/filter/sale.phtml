@@ -1,0 +1,71 @@
+<?php
+/**
+ * Panth_SaleFilterHyva — Hyvä / Alpine filter template.
+ *
+ * @var \Panth\SaleFilterHyva\Block\LayeredNavigation\FilterRenderer $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+
+$filter = $block->getFilter();
+if ($filter === null) {
+    return;
+}
+$items = $filter->getItems();
+if ($items === []) {
+    return;
+}
+
+$showCount   = $block->isShowCount();
+$showIcon    = $block->isShowIcon();
+$iconLeft    = $block->getIconPosition() === \Panth\SaleFilterHyva\Model\Config::ICON_LEFT;
+$expanded    = $block->isDefaultExpanded();
+$animated    = $block->isAnimationEnabled();
+$style       = $block->getTemplateStyle();
+$color       = $block->getHighlightColor();
+
+$wrapperClass = match ($style) {
+    \Panth\SaleFilterHyva\Model\Config::STYLE_MINIMAL => 'filter-options-item panth-salefilter panth-salefilter--minimal py-2',
+    \Panth\SaleFilterHyva\Model\Config::STYLE_CARD    => 'filter-options-item panth-salefilter panth-salefilter--card p-3 mb-4 border rounded shadow-sm',
+    default                                             => 'filter-options-item panth-salefilter mb-4',
+};
+?>
+<div class="<?= $escaper->escapeHtmlAttr($wrapperClass) ?>"
+     x-data="{ open: <?= $expanded ? 'true' : 'false' ?> }">
+    <button type="button"
+            class="filter-options-title w-full flex justify-between items-center font-semibold text-left cursor-pointer py-2 border-b"
+            style="color: <?= $escaper->escapeHtmlAttr($color) ?>;"
+            @click="open = !open"
+            :aria-expanded="open ? 'true' : 'false'">
+        <?php if ($showIcon && $iconLeft): ?>
+            <svg :class="{'rotate-180': open}"
+                 xmlns="http://www.w3.org/2000/svg"
+                 class="h-4 w-4 mr-2 transition-transform"
+                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+        <?php endif; ?>
+        <span class="flex-grow"><?= $escaper->escapeHtml($block->getFilterLabel()) ?></span>
+        <?php if ($showIcon && !$iconLeft): ?>
+            <svg :class="{'rotate-180': open}"
+                 xmlns="http://www.w3.org/2000/svg"
+                 class="h-4 w-4 ml-2 transition-transform"
+                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+        <?php endif; ?>
+    </button>
+    <ul class="filter-options-content py-2"
+        x-show="open"
+        <?php if ($animated): ?>x-transition<?php endif; ?>>
+        <?php foreach ($items as $item): ?>
+            <li class="py-1">
+                <a href="<?= $escaper->escapeUrl($item->getUrl()) ?>" class="block hover:underline">
+                    <?= $escaper->escapeHtml($item->getLabel()) ?>
+                    <?php if ($showCount): ?>
+                        <span class="text-gray-500 text-sm">(<?= (int) $item->getCount() ?>)</span>
+                    <?php endif; ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
