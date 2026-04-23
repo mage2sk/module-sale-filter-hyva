@@ -7,7 +7,7 @@ use Panth\SaleFilter\Block\LayeredNavigation\FilterRenderer as CoreFilterRendere
 use Panth\SaleFilter\Model\Config as CoreConfig;
 use Panth\SaleFilterHyva\Model\Config as HyvaConfig;
 use Magento\Catalog\Model\Layer\Resolver as LayerResolver;
-use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Framework\App\Http\Context as HttpContext;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Store\Model\StoreManagerInterface;
@@ -24,7 +24,7 @@ class FilterRenderer extends CoreFilterRenderer
     public function __construct(
         Template\Context $context,
         StoreManagerInterface $storeManager,
-        CustomerSession $customerSession,
+        HttpContext $httpContext,
         RequestInterface $request,
         CoreConfig $config,
         LayerResolver $layerResolver,
@@ -34,7 +34,7 @@ class FilterRenderer extends CoreFilterRenderer
         parent::__construct(
             $context,
             $storeManager,
-            $customerSession,
+            $httpContext,
             $request,
             $config,
             $layerResolver,
