@@ -3,13 +3,10 @@
 /**
  * Panth_SaleFilterHyva — adminhtml system config.
  *
- * Extends the core module's section (`panth_salefilter`) by contributing an
- * additional "Appearance" group. Magento merges system.xml from every module
- * by section id, so the General group (from Panth_SaleFilter) and the
- * Appearance group (from this module) render on the same admin page.
- *
- * Section-level attributes are declared on the core module's system.xml only;
- * we just name the section so the group gets nested correctly.
+ * Extends the core module's section (`panth_salefilter`) with one Hyvä
+ * appearance toggle. Heavier look-and-feel options were removed — the
+ * template now uses Hyvä's default Tailwind classes + Alpine transitions
+ * so nothing is configurable beyond "expanded or collapsed on first paint".
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -20,49 +17,11 @@
                    showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Appearance (Hyvä)</label>
 
-                <field id="template_style" translate="label comment" type="select" sortOrder="10"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Template Style</label>
-                    <source_model>Panth\SaleFilterHyva\Model\Source\TemplateStyle</source_model>
-                    <comment>Visual variant of the "On Sale" filter in layered navigation.</comment>
-                </field>
-
-                <field id="default_expanded" translate="label comment" type="select" sortOrder="20"
+                <field id="default_expanded" translate="label comment" type="select" sortOrder="10"
                        showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Expanded By Default</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>When enabled, the filter is rendered in its open state on first paint.</comment>
-                </field>
-
-                <field id="show_icon" translate="label comment" type="select" sortOrder="30"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Show Toggle Icon</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment>Display the chevron icon that rotates when the filter is toggled.</comment>
-                </field>
-
-                <field id="icon_position" translate="label comment" type="select" sortOrder="40"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Icon Position</label>
-                    <source_model>Panth\SaleFilterHyva\Model\Source\IconPosition</source_model>
-                    <depends>
-                        <field id="show_icon">1</field>
-                    </depends>
-                    <comment>Place the chevron icon to the left or right of the label.</comment>
-                </field>
-
-                <field id="animation_enabled" translate="label comment" type="select" sortOrder="50"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Enable Animation</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment>Use Alpine.js x-transition when expanding/collapsing the filter.</comment>
-                </field>
-
-                <field id="highlight_color" translate="label comment" type="text" sortOrder="60"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Highlight Color</label>
-                    <validate>validate-color</validate>
-                    <comment>CSS color (hex, rgb, or named) used to highlight the filter label.</comment>
                 </field>
             </group>
         </section>

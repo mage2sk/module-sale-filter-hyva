@@ -15,9 +15,9 @@ use Magento\Store\Model\StoreManagerInterface;
 /**
  * Hyvä-flavoured renderer for the "On Sale" layered-navigation filter.
  *
- * Extends the core cache-aware renderer and exposes Hyvä-specific appearance
- * getters (template style, icon position, animation toggle) so the .phtml
- * template can stay declarative.
+ * Exposes only the one Hyvä-specific toggle ("expanded on first paint")
+ * to the .phtml template. Cache key is varied on that flag so admin
+ * changes bust the block's FPC slot.
  */
 class FilterRenderer extends CoreFilterRenderer
 {
@@ -42,51 +42,19 @@ class FilterRenderer extends CoreFilterRenderer
         );
     }
 
-    public function getTemplateStyle(): string
-    {
-        return $this->hyvaConfig->getTemplateStyle();
-    }
-
     public function isDefaultExpanded(): bool
     {
         return $this->hyvaConfig->isDefaultExpanded();
     }
 
-    public function isShowIcon(): bool
-    {
-        return $this->hyvaConfig->isShowIcon();
-    }
-
-    public function getIconPosition(): string
-    {
-        return $this->hyvaConfig->getIconPosition();
-    }
-
-    public function isAnimationEnabled(): bool
-    {
-        return $this->hyvaConfig->isAnimationEnabled();
-    }
-
-    public function getHighlightColor(): string
-    {
-        return $this->hyvaConfig->getHighlightColor();
-    }
-
     /**
-     * Vary cached output per appearance setting so admin changes bust the FPC slot.
-     *
      * @return array<int, mixed>
      */
     public function getCacheKeyInfo(): array
     {
         return array_merge(parent::getCacheKeyInfo(), [
-            'MAGE2SK_SALEFILTER_HYVA',
-            $this->getTemplateStyle(),
+            'PANTH_SALEFILTER_HYVA',
             (int) $this->isDefaultExpanded(),
-            (int) $this->isShowIcon(),
-            $this->getIconPosition(),
-            (int) $this->isAnimationEnabled(),
-            $this->getHighlightColor(),
         ]);
     }
 }

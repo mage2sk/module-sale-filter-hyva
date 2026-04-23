@@ -12,12 +12,7 @@
     <default>
         <panth_salefilter>
             <appearance>
-                <template_style>default</template_style>
                 <default_expanded>1</default_expanded>
-                <show_icon>1</show_icon>
-                <icon_position>right</icon_position>
-                <animation_enabled>1</animation_enabled>
-                <highlight_color>#e02b27</highlight_color>
             </appearance>
         </panth_salefilter>
     </default>
