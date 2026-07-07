@@ -7,13 +7,6 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
-/**
- * Store-scoped reader for the single Hyvä appearance setting.
- *
- * Heavier look-and-feel options were removed so the template stays lean
- * and uses Hyvä's default Tailwind conventions. Only the "open or
- * collapsed on first paint" toggle is exposed.
- */
 class Config
 {
     public const XML_PATH_DEFAULT_EXPANDED = 'panth_salefilter/appearance/default_expanded';

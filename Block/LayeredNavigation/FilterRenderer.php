@@ -12,13 +12,6 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Store\Model\StoreManagerInterface;
 
-/**
- * Hyvä-flavoured renderer for the "On Sale" layered-navigation filter.
- *
- * Exposes only the one Hyvä-specific toggle ("expanded on first paint")
- * to the .phtml template. Cache key is varied on that flag so admin
- * changes bust the block's FPC slot.
- */
 class FilterRenderer extends CoreFilterRenderer
 {
     public function __construct(
@@ -47,9 +40,6 @@ class FilterRenderer extends CoreFilterRenderer
         return $this->hyvaConfig->isDefaultExpanded();
     }
 
-    /**
-     * @return array<int, mixed>
-     */
     public function getCacheKeyInfo(): array
     {
         return array_merge(parent::getCacheKeyInfo(), [
