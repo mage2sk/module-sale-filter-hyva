@@ -114,7 +114,7 @@ Performance • SEO • Adobe Commerce Cloud
 - **Registered at** `Panth_SaleFilter::layer/filter/sale.phtml` so the active theme picks it up automatically when Hyva is detected.
 
 ### Admin Appearance Toggle
-- **Expanded By Default** setting under *Stores → Configuration → Panth Extensions → Sale Filter → Appearance (Hyva)*.
+- **Expanded By Default** setting under *Stores -> Configuration -> Panth Extensions -> Sale Filter -> Appearance (Hyva)*.
 - **Default is Yes (expanded)**, so the filter is open on first paint for new installs.
 - **Store-scoped**: you can set a different state per store view.
 

@@ -3,7 +3,7 @@
   Panth_SaleFilterHyva: hook point for Hyvä-specific overrides of the sale
   filter rendering. Magento's layered-nav FilterRenderer iterates the filter
   list (including ours, added via plugin) with the active theme's filter
-  template — Hyvä ships its own under
+  template - Hyvä ships its own under
   vendor/hyva-themes/magento2-default-theme/Magento_LayeredNavigation so no
   template override is required for v1.0.0.
 -->

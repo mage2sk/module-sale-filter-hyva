@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Panth_SaleFilterHyva — adminhtml system config.
+ * Panth_SaleFilterHyva - adminhtml system config.
  *
  * Extends the core module's section (`panth_salefilter`) with one Hyvä
- * appearance toggle. Heavier look-and-feel options were removed — the
+ * appearance toggle. Heavier look-and-feel options were removed - the
  * template now uses Hyvä's default Tailwind classes + Alpine transitions
  * so nothing is configurable beyond "expanded or collapsed on first paint".
  */
