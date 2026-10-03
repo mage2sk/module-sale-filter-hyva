@@ -1,0 +1,29 @@
+<?php
+/**
+ * @var \Panth\SaleFilterHyva\Block\LayeredNavigation\FilterRenderer $block
+ * @var \Hyva\Theme\ViewModel\HyvaCsp $hyvaCsp
+ */
+
+if (!$block->isDefaultExpanded()) {
+    return;
+}
+?>
+<script>
+    (function () {
+        'use strict';
+        document.querySelectorAll('template[x-if]').forEach(function (template) {
+            if (!template.content || !template.content.querySelector('.panth-salefilter-hyva')) {
+                return;
+            }
+            var card = template.parentElement;
+            if (!card || !card.hasAttribute('x-data')) {
+                return;
+            }
+            card.setAttribute(
+                'x-data',
+                card.getAttribute('x-data').replace(/open:\s*false/, 'open: true')
+            );
+        });
+    })();
+</script>
+<?php $hyvaCsp->registerInlineScript() ?>

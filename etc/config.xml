@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Panth_SaleFilterHyva - defaults for the Hyvä appearance group.
+ *
+ * Shares the same section id (`panth_salefilter`) as the core module so
+ * Magento merges the two default trees into one combined config node.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <panth_salefilter>
+            <appearance>
+                <default_expanded>1</default_expanded>
+            </appearance>
+        </panth_salefilter>
+    </default>
+</config>

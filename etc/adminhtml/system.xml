@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Panth_SaleFilterHyva - adminhtml system config.
+ *
+ * Extends the core module's section (`panth_salefilter`) with one Hyvä
+ * appearance toggle. Heavier look-and-feel options were removed - the
+ * template now uses Hyvä's default Tailwind classes + Alpine transitions
+ * so nothing is configurable beyond "expanded or collapsed on first paint".
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="panth_salefilter">
+            <group id="appearance" translate="label" sortOrder="20"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Appearance (Hyvä)</label>
+
+                <field id="default_expanded" translate="label comment" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Expanded By Default</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>When enabled, the filter is rendered in its open state on first paint.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

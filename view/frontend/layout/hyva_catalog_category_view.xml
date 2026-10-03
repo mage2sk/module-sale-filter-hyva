@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="catalog.navigation.renderer">
+            <arguments>
+                <argument name="panth_salefilter_template" xsi:type="string">Panth_SaleFilterHyva::layer/filter/sale.phtml</argument>
+                <argument name="panth_salefilter_block" xsi:type="string">Panth\SaleFilterHyva\Block\LayeredNavigation\FilterRenderer</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="before.body.end">
+            <block class="Panth\SaleFilterHyva\Block\LayeredNavigation\FilterRenderer"
+                   name="panth.salefilter.hyva.expand"
+                   template="Panth_SaleFilterHyva::layer/filter/expand.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

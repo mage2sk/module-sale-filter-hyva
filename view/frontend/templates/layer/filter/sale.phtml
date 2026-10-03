@@ -1,0 +1,44 @@
+<?php
+/**
+ * @var \Panth\SaleFilterHyva\Block\LayeredNavigation\FilterRenderer $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+
+$filter = $block->getFilter();
+if ($filter === null) {
+    return;
+}
+$items = $filter->getItems();
+if (empty($items)) {
+    return;
+}
+
+$showCount = $block->isShowCount();
+$label     = (string) ($block->getFilterTitle() ?: $block->getFilterLabel());
+?>
+<ol role="list"
+    class="items panth-salefilter-hyva"
+    aria-label="<?= $escaper->escapeHtmlAttr(__('%1 filter options', $label)) ?>">
+    <?php foreach ($items as $item): ?>
+        <?php $count = (int) $item->getCount(); ?>
+        <li class="item">
+            <?php if ($count > 0): ?>
+                <a href="<?= $escaper->escapeUrl($item->getUrl()) ?>"
+                   rel="nofollow"
+                   class="flex justify-between items-center py-2.5 hover:text-black"
+                   aria-label="<?= $escaper->escapeHtmlAttr($count === 1
+                       ? __('%1 filter, 1 available product', $item->getLabel())
+                       : __('%1 filter, %2 available products', $item->getLabel(), $count)) ?>">
+                    <span><?= $escaper->escapeHtml($item->getLabel()) ?></span>
+                    <?php if ($showCount): ?>
+                        <span class="count">(<?= (int) $count ?>)</span>
+                    <?php endif; ?>
+                </a>
+            <?php else: ?>
+                <span class="flex justify-between items-center py-2.5">
+                    <span><?= $escaper->escapeHtml($item->getLabel()) ?></span>
+                </span>
+            <?php endif; ?>
+        </li>
+    <?php endforeach; ?>
+</ol>
