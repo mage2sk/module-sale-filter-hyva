@@ -2,8 +2,8 @@
     "name": "mage2kishan/module-sale-filter-hyva",
     "description": "Panth Sale Filter \u2014 Hyv\u00e4 compatibility module. Ships Alpine.js + Tailwind templates and the Appearance admin group for the \"On Sale\" layered navigation filter. Install alongside mage2kishan/module-sale-filter.",
     "type": "magento2-module",
-    "version": "1.1.1",
-    "license": "proprietary",
+    "version": "1.1.2",
+    "license": "MIT",
     "keywords": [
         "magento2",
         "magento2-module",
